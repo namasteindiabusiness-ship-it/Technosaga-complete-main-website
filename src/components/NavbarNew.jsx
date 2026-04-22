@@ -40,6 +40,7 @@ export default function Navbar({ onQuote }) {
   const [mobSub, setMobSub] = useState(null);
   const location = useLocation();
   const navRef = useRef(null);
+  const leaveTimer = useRef(null);
 
   // Scroll detection for solid navbar
   useEffect(() => {
@@ -100,8 +101,8 @@ export default function Navbar({ onQuote }) {
               <li
                 key={item.label}
                 className="nav2__item"
-                onMouseEnter={() => item.sub && setSub(item.label)}
-                onMouseLeave={() => item.sub && setSub(null)}
+                onMouseEnter={() => { clearTimeout(leaveTimer.current); item.sub && setSub(item.label); }}
+                onMouseLeave={() => { if (item.sub) { leaveTimer.current = setTimeout(() => setSub(null), 150); } }}
               >
                 {item.sub ? (
                   <button
@@ -124,6 +125,8 @@ export default function Navbar({ onQuote }) {
                   <div
                     className={`nav2__drop${item.wide ? " nav2__drop--wide" : ""}${sub === item.label ? " nav2__drop--open" : ""}`}
                     role="menu"
+                    onMouseEnter={() => clearTimeout(leaveTimer.current)}
+                    onMouseLeave={() => { leaveTimer.current = setTimeout(() => setSub(null), 150); }}
                   >
                     {item.sub.map((s) => (
                       <Link
@@ -348,7 +351,7 @@ export default function Navbar({ onQuote }) {
         /* ── DROPDOWN ── */
         .nav2__drop {
           position: absolute;
-          top: calc(100% + 8px);
+          top: calc(100% + 0px);
           left: 0;
           min-width: 210px;
           background: #0f1521;
@@ -360,8 +363,20 @@ export default function Navbar({ onQuote }) {
           visibility: hidden;
           opacity: 0;
           pointer-events: none;
-          transform: translateY(-6px);
+          transform: translateY(4px);
           transition: opacity 0.2s, transform 0.2s, visibility 0s linear 0.2s;
+          /* Bridge gap so mouse doesn't lose hover when moving from nav to dropdown */
+          margin-top: 0px;
+        }
+        /* Invisible bridge between nav item and dropdown */
+        .nav2__item::after {
+          content: '';
+          position: absolute;
+          bottom: -12px;
+          left: 0;
+          right: 0;
+          height: 12px;
+          background: transparent;
         }
         .nav2__drop--open {
           visibility: visible;
@@ -372,7 +387,7 @@ export default function Navbar({ onQuote }) {
         }
         .nav2__drop--wide {
           position: fixed;
-          top: 70px;
+          top: 64px;
           left: 50%;
           transform: translateX(-50%);
           min-width: 520px;
