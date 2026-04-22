@@ -5,19 +5,27 @@ import { structuredData } from "../../libs/static";
 
 const StyleSheet = { create: (s) => s };
 
+/* ── GLOBAL DARK THEME OVERRIDE ── */
+const GLOBAL_CSS = `
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+  body { background: #0B0F1A; }
+`;
+
+
+
 const T = {
-  gold: "#CF9645",
-  goldDark: "#b8762a",
-  goldLight: "#fdf6e9",
-  goldBorder: "rgba(207,150,69,0.22)",
-  bg: "#f8f4ef",
-  white: "#ffffff",
-  dark: "#0e0a04",
-  darkMid: "#1a1005",
-  darkSoft: "#2e1f08",
-  text: "#1a1208",
-  textMid: "#5a4020",
-  textMuted: "#9e8c6e",
+  gold: "#D4AF37",
+  goldDark: "#b8962d",
+  goldLight: "rgba(212,175,55,0.08)",
+  goldBorder: "rgba(212,175,55,0.2)",
+  bg: "#0B0F1A",
+  white: "#fff",
+  dark: "#0B0F1A",
+  darkMid: "#0f1521",
+  darkSoft: "#121826",
+  text: "rgba(255,255,255,0.85)",
+  textMid: "rgba(255,255,255,0.6)",
+  textMuted: "rgba(255,255,255,0.4)",
   radius: { sm: 6, md: 10, lg: 14, xl: 20 },
 };
 
@@ -143,8 +151,8 @@ const MILESTONES = [
 
 const styles = StyleSheet.create({
   page: {
-    fontFamily: "'DM Sans', sans-serif",
-    background: T.bg,
+    fontFamily: "'Poppins', sans-serif",
+    background: "#0B0F1A",
     minHeight: "100vh",
   },
 
@@ -153,7 +161,7 @@ const styles = StyleSheet.create({
     background: `linear-gradient(160deg, ${T.dark} 0%, ${T.darkMid} 55%, ${T.darkSoft} 100%)`,
     position: "relative",
     overflow: "hidden",
-    marginTop: 90,
+    marginTop: 72,
   },
   heroGlow: {
     position: "absolute",
@@ -161,7 +169,7 @@ const styles = StyleSheet.create({
     height: 700,
     borderRadius: "50%",
     background:
-      "radial-gradient(circle, rgba(207,150,69,0.07) 0%, transparent 65%)",
+      "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 65%)",
     top: "50%",
     left: "50%",
     transform: "translate(-50%,-50%)",
@@ -173,7 +181,7 @@ const styles = StyleSheet.create({
     width: 500,
     height: 500,
     borderRadius: "50%",
-    border: "1px solid rgba(207,150,69,0.06)",
+    border: "1px solid rgba(212,175,55,0.06)",
     top: -200,
     right: -120,
     pointerEvents: "none",
@@ -184,7 +192,7 @@ const styles = StyleSheet.create({
     width: 280,
     height: 280,
     borderRadius: "50%",
-    border: "1px solid rgba(207,150,69,0.06)",
+    border: "1px solid rgba(212,175,55,0.06)",
     bottom: -100,
     left: -60,
     pointerEvents: "none",
@@ -206,8 +214,8 @@ const styles = StyleSheet.create({
     display: "inline-flex",
     alignItems: "center",
     gap: 7,
-    background: "rgba(207,150,69,0.13)",
-    border: "1px solid rgba(207,150,69,0.28)",
+    background: "rgba(212,175,55,0.13)",
+    border: "1px solid rgba(212,175,55,0.28)",
     borderRadius: 100,
     padding: "5px 14px 5px 9px",
     marginBottom: "1.4rem",
@@ -228,7 +236,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   heroTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "clamp(2.6rem, 4.5vw, 4rem)",
     fontWeight: 700,
     color: T.white,
@@ -240,7 +248,7 @@ const styles = StyleSheet.create({
   heroDivider: {
     width: 40,
     height: 2,
-    background: "rgba(207,150,69,0.5)",
+    background: "rgba(212,175,55,0.5)",
     borderRadius: 2,
     margin: "0.9rem 0",
   },
@@ -299,7 +307,7 @@ const styles = StyleSheet.create({
     padding: "5px 14px",
     borderRadius: 100,
     textTransform: "uppercase",
-    boxShadow: "0 4px 14px rgba(207,150,69,0.35)",
+    boxShadow: "0 4px 14px rgba(212,175,55,0.35)",
     zIndex: 3,
   },
   heroPhotoFrame: {
@@ -329,7 +337,7 @@ const styles = StyleSheet.create({
     background: "rgba(14,10,4,0.72)",
     backdropFilter: "blur(8px)",
     WebkitBackdropFilter: "blur(8px)",
-    border: "1px solid rgba(207,150,69,0.25)",
+    border: "1px solid rgba(212,175,55,0.25)",
     borderRadius: T.radius.lg,
     padding: "1rem 1.2rem",
     display: "grid",
@@ -339,15 +347,15 @@ const styles = StyleSheet.create({
   heroPhotoBadgeDividerH: {
     gridColumn: "1 / -1",
     height: 1,
-    background: "rgba(207,150,69,0.18)",
+    background: "rgba(212,175,55,0.18)",
   },
   heroPhotoBadgeDividerV: {
     width: 1,
-    background: "rgba(207,150,69,0.18)",
+    background: "rgba(212,175,55,0.18)",
   },
   heroPhotoBadgeStat: { textAlign: "center" },
   heroPhotoBadgeNum: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.8rem",
     fontWeight: 700,
     color: T.gold,
@@ -363,7 +371,7 @@ const styles = StyleSheet.create({
 
   /* ── HERO SERVICES STRIP ── */
   heroStrip: {
-    borderTop: "1px solid rgba(207,150,69,0.12)",
+    borderTop: "1px solid rgba(212,175,55,0.12)",
     padding: "1.1rem 2.5rem",
     display: "flex",
     alignItems: "center",
@@ -375,7 +383,7 @@ const styles = StyleSheet.create({
   heroStripLabel: {
     fontSize: "0.65rem",
     fontWeight: 700,
-    color: "rgba(207,150,69,0.6)",
+    color: "rgba(212,175,55,0.6)",
     letterSpacing: "0.15em",
     textTransform: "uppercase",
     flexShrink: 0,
@@ -384,7 +392,7 @@ const styles = StyleSheet.create({
     width: 3,
     height: 3,
     borderRadius: "50%",
-    background: "rgba(207,150,69,0.4)",
+    background: "rgba(212,175,55,0.4)",
     flexShrink: 0,
     display: "inline-block",
   },
@@ -418,17 +426,17 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   sectionTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "clamp(1.9rem, 3.5vw, 2.9rem)",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     margin: "0 0 0.8rem",
     lineHeight: 1.12,
   },
   sectionTitleAccent: { color: T.gold },
   sectionSubtitle: {
     fontSize: "0.93rem",
-    color: T.textMuted,
+    color: "rgba(255,255,255,0.4)",
     maxWidth: 560,
     margin: "0 auto",
     lineHeight: 1.75,
@@ -456,7 +464,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 24,
     left: 24,
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.lg,
     padding: "1rem 1.3rem",
     boxShadow: "0 8px 28px rgba(0,0,0,0.18)",
@@ -466,7 +474,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   storyBadgeNum: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "2rem",
     fontWeight: 700,
     color: T.gold,
@@ -474,14 +482,14 @@ const styles = StyleSheet.create({
   },
   storyBadgeLabel: {
     fontSize: "0.78rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     fontWeight: 500,
     lineHeight: 1.4,
   },
   storyBody: {},
   storyP: {
     fontSize: "0.95rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     lineHeight: 1.85,
     margin: "0 0 1.2rem",
   },
@@ -492,7 +500,7 @@ const styles = StyleSheet.create({
     marginTop: "1.8rem",
   },
   valueItem: {
-    background: T.goldLight,
+    background: "rgba(212,175,55,0.08)",
     borderRadius: T.radius.md,
     padding: "1rem 1.1rem",
     border: `1px solid ${T.goldBorder}`,
@@ -504,11 +512,11 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     letterSpacing: "0.05em",
   },
-  valueDesc: { fontSize: "0.8rem", color: T.textMuted, lineHeight: 1.6 },
+  valueDesc: { fontSize: "0.8rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.6 },
 
   /* ── SERVICES ── */
   servicesBg: {
-    background: `linear-gradient(180deg, ${T.bg} 0%, #f0e8dc 100%)`,
+    background: `linear-gradient(180deg, #0B0F1A 0%, "#0f1521" 100%)`,
     padding: "5rem 20px",
   },
   servicesGrid: {
@@ -519,7 +527,7 @@ const styles = StyleSheet.create({
     gap: "1rem",
   },
   serviceCard: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.lg,
     padding: "1.5rem 1.2rem",
     border: `1px solid ${T.goldBorder}`,
@@ -530,14 +538,14 @@ const styles = StyleSheet.create({
   },
   serviceIcon: { fontSize: "1.8rem", marginBottom: "0.8rem", display: "block" },
   serviceTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1rem",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     margin: "0 0 0.5rem",
     lineHeight: 1.25,
   },
-  serviceDesc: { fontSize: "0.78rem", color: T.textMuted, lineHeight: 1.65 },
+  serviceDesc: { fontSize: "0.78rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.65 },
   serviceHoverLine: {
     width: 28,
     height: 2,
@@ -560,7 +568,7 @@ const styles = StyleSheet.create({
     height: 600,
     borderRadius: "50%",
     background:
-      "radial-gradient(circle, rgba(207,150,69,0.08) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%)",
     top: "50%",
     left: "50%",
     transform: "translate(-50%,-50%)",
@@ -577,18 +585,18 @@ const styles = StyleSheet.create({
   mvCard: {
     borderRadius: T.radius.xl,
     padding: "2.5rem 2.2rem",
-    border: "1px solid rgba(207,150,69,0.2)",
+    border: "1px solid rgba(212,175,55,0.2)",
     position: "relative",
     overflow: "hidden",
   },
-  mvCardMission: { background: "rgba(207,150,69,0.12)" },
+  mvCardMission: { background: "rgba(212,175,55,0.12)" },
   mvCardVision: { background: "rgba(255,255,255,0.05)" },
-  mvCardFuture: { background: "rgba(207,150,69,0.07)" },
+  mvCardFuture: { background: "rgba(212,175,55,0.07)" },
   mvIconWrap: {
     width: 52,
     height: 52,
     borderRadius: T.radius.md,
-    background: "rgba(207,150,69,0.2)",
+    background: "rgba(212,175,55,0.2)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -604,7 +612,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   mvTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.6rem",
     fontWeight: 700,
     color: T.white,
@@ -623,7 +631,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: "50%",
-    background: "rgba(207,150,69,0.08)",
+    background: "rgba(212,175,55,0.08)",
     transform: "translate(30px, 30px)",
   },
 
@@ -666,22 +674,22 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   timelineYear: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.5rem",
     fontWeight: 700,
     color: T.gold,
     lineHeight: 1,
   },
   timelineTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.1rem",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     marginBottom: 4,
   },
-  timelineDesc: { fontSize: "0.83rem", color: T.textMuted, lineHeight: 1.65 },
+  timelineDesc: { fontSize: "0.83rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.65 },
   timelineCard: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.md,
     padding: "1rem 1.2rem",
     border: `1px solid ${T.goldBorder}`,
@@ -690,7 +698,7 @@ const styles = StyleSheet.create({
 
   /* ── FUTURE PLAN ── */
   futureBg: {
-    background: T.goldLight,
+    background: "rgba(212,175,55,0.08)",
     padding: "5rem 20px",
     borderTop: `1px solid ${T.goldBorder}`,
   },
@@ -704,16 +712,16 @@ const styles = StyleSheet.create({
   },
   futureLeft: {},
   futureTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "clamp(1.9rem, 3vw, 2.7rem)",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     margin: "0 0 1rem",
     lineHeight: 1.12,
   },
   futureBody: {
     fontSize: "0.93rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     lineHeight: 1.8,
     marginBottom: "1.8rem",
   },
@@ -732,13 +740,13 @@ const styles = StyleSheet.create({
   },
   futureItemText: {
     fontSize: "0.88rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     lineHeight: 1.6,
     fontWeight: 500,
   },
   futureRight: { display: "flex", flexDirection: "column", gap: "1rem" },
   futurePlanCard: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.lg,
     padding: "1.4rem 1.5rem",
     border: `1px solid ${T.goldBorder}`,
@@ -748,7 +756,7 @@ const styles = StyleSheet.create({
     gap: "1rem",
   },
   futurePlanYear: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.3rem",
     fontWeight: 700,
     color: T.gold,
@@ -758,10 +766,10 @@ const styles = StyleSheet.create({
   futurePlanTitle: {
     fontSize: "0.88rem",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     marginBottom: 3,
   },
-  futurePlanDesc: { fontSize: "0.8rem", color: T.textMuted, lineHeight: 1.6 },
+  futurePlanDesc: { fontSize: "0.8rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.6 },
 
   /* ── CTA ── */
   ctaBg: {
@@ -777,7 +785,7 @@ const styles = StyleSheet.create({
     height: 500,
     borderRadius: "50%",
     background:
-      "radial-gradient(circle, rgba(207,150,69,0.1) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%)",
     top: "50%",
     left: "50%",
     transform: "translate(-50%,-50%)",
@@ -793,7 +801,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   ctaTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "clamp(1.9rem, 3.5vw, 2.9rem)",
     fontWeight: 700,
     color: T.white,
@@ -921,7 +929,7 @@ export default function AboutUs() {
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
-      <div style={styles.page}>
+      <div style={{...styles.page, background:"#0B0F1A", fontFamily:"'Poppins', sans-serif", paddingTop: 72}}>
         <style>{`
         @media (max-width: 1024px) {
           .services-grid { grid-template-columns: repeat(4, 1fr) !important; }
@@ -1171,7 +1179,7 @@ export default function AboutUs() {
         </div>
 
         {/* ══ TIMELINE ══ */}
-        <div style={{ background: T.bg }}>
+        <div style={{ background: "#0B0F1A" }}>
           <div style={styles.section} className="section">
             <div style={styles.sectionHeader}>
               <div style={styles.sectionEyebrow}>

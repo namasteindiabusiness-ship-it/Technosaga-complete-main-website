@@ -9,23 +9,31 @@ import { Helmet } from "react-helmet-async";
 
 const StyleSheet = { create: (s) => s };
 
+/* ── GLOBAL DARK THEME OVERRIDE ── */
+const GLOBAL_CSS = `
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+  body { background: #0B0F1A; }
+`;
+
+
+
 const T = {
-  gold: "#CF9645",
-  goldDark: "#b8762a",
-  goldLight: "#fdf6e9",
-  goldBorder: "rgba(207,150,69,0.22)",
-  bg: "#f8f4ef",
-  white: "#ffffff",
-  text: "#1a1208",
-  textMid: "#5a4020",
-  textMuted: "#9e8c6e",
+  gold: "#D4AF37",
+  goldDark: "#b8962d",
+  goldLight: "rgba(212,175,55,0.08)",
+  goldBorder: "rgba(212,175,55,0.2)",
+  bg: "#0B0F1A",
+  white: "#fff",
+  text: "rgba(255,255,255,0.85)",
+  textMid: "rgba(255,255,255,0.6)",
+  textMuted: "rgba(255,255,255,0.4)",
   radius: { sm: 6, md: 10, lg: 14, xl: 20 },
 };
 
 const styles = StyleSheet.create({
   page: {
-    fontFamily: "'DM Sans', sans-serif",
-    background: T.bg,
+    fontFamily: "'Poppins', sans-serif",
+    background: "#0B0F1A",
     minHeight: "100vh",
   },
   authorAvatarPlaceholder: {
@@ -107,7 +115,7 @@ const styles = StyleSheet.create({
     marginBottom: "1rem",
   },
   heroTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "clamp(1.9rem, 4vw, 3rem)",
     fontWeight: 700,
     color: T.white,
@@ -178,7 +186,7 @@ const styles = StyleSheet.create({
   /* ── Article ── */
   article: {},
   articleBody: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.xl,
     padding: "3rem 3.5rem",
     boxShadow: "0 4px 24px rgba(160,110,30,0.08)",
@@ -195,10 +203,10 @@ const styles = StyleSheet.create({
     fontWeight: 400,
   },
   contentH2: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.7rem",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     margin: "2.2rem 0 0.9rem",
     lineHeight: 1.2,
     paddingBottom: "0.5rem",
@@ -208,14 +216,14 @@ const styles = StyleSheet.create({
     margin: "2rem 0",
     padding: "1.4rem 2rem",
     borderLeft: `4px solid ${T.gold}`,
-    background: T.goldLight,
+    background: "rgba(212,175,55,0.08)",
     borderRadius: `0 ${T.radius.md}px ${T.radius.md}px 0`,
   },
   contentQuoteText: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.3rem",
     fontStyle: "italic",
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     lineHeight: 1.5,
     marginBottom: 8,
   },
@@ -240,8 +248,8 @@ const styles = StyleSheet.create({
   contentImgCaption: {
     padding: "0.7rem 1rem",
     fontSize: "0.78rem",
-    color: T.textMuted,
-    background: T.goldLight,
+    color: "rgba(255,255,255,0.4)",
+    background: "rgba(212,175,55,0.08)",
     textAlign: "center",
     fontStyle: "italic",
   },
@@ -259,13 +267,13 @@ const styles = StyleSheet.create({
   tagsLabel: {
     fontSize: "0.72rem",
     fontWeight: 700,
-    color: T.textMuted,
+    color: "rgba(255,255,255,0.4)",
     letterSpacing: "0.1em",
     textTransform: "uppercase",
   },
   tag: {
     display: "inline-block",
-    background: T.goldLight,
+    background: "rgba(212,175,55,0.08)",
     border: `1px solid ${T.goldBorder}`,
     color: T.goldDark,
     fontSize: "0.73rem",
@@ -277,7 +285,7 @@ const styles = StyleSheet.create({
 
   /* Share */
   shareBar: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.lg,
     padding: "1.2rem 1.8rem",
     border: `1px solid ${T.goldBorder}`,
@@ -292,7 +300,7 @@ const styles = StyleSheet.create({
   shareLabel: {
     fontSize: "0.78rem",
     fontWeight: 700,
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     letterSpacing: "0.08em",
     textTransform: "uppercase",
   },
@@ -304,7 +312,7 @@ const styles = StyleSheet.create({
     padding: "7px 14px",
     borderRadius: T.radius.sm,
     border: `1.5px solid ${T.goldBorder}`,
-    background: T.goldLight,
+    background: "rgba(212,175,55,0.08)",
     color: T.goldDark,
     fontSize: "0.76rem",
     fontWeight: 600,
@@ -315,7 +323,7 @@ const styles = StyleSheet.create({
 
   /* Author bio */
   authorCard: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.xl,
     padding: "2rem 2.2rem",
     border: `1px solid ${T.goldBorder}`,
@@ -342,27 +350,27 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   authorName: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.25rem",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     marginBottom: 2,
   },
   authorRole: {
     fontSize: "0.78rem",
-    color: T.textMuted,
+    color: "rgba(255,255,255,0.4)",
     marginBottom: "0.7rem",
   },
   authorBio: {
     fontSize: "0.84rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     lineHeight: 1.7,
   },
 
   /* ── Sidebar ── */
   sidebar: {},
   sideWidget: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.lg,
     padding: "1.5rem",
     border: `1px solid ${T.goldBorder}`,
@@ -399,7 +407,7 @@ const styles = StyleSheet.create({
   },
   tocText: {
     fontSize: "0.83rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     lineHeight: 1.4,
     fontWeight: 500,
     transition: "color 0.18s",
@@ -432,13 +440,13 @@ const styles = StyleSheet.create({
   relatedTitle: {
     fontSize: "0.82rem",
     fontWeight: 600,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     lineHeight: 1.35,
     marginBottom: 3,
   },
   relatedDate: {
     fontSize: "0.72rem",
-    color: T.textMuted,
+    color: "rgba(255,255,255,0.4)",
   },
 
   /* Newsletter widget */
@@ -446,12 +454,12 @@ const styles = StyleSheet.create({
     width: "100%",
     boxSizing: "border-box",
     padding: "0.7rem 0.9rem",
-    background: T.bg,
+    background: "#0B0F1A",
     border: `1.5px solid ${T.goldBorder}`,
     borderRadius: T.radius.sm,
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: "'Poppins', sans-serif",
     fontSize: "0.84rem",
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     outline: "none",
     marginBottom: 8,
   },
@@ -462,7 +470,7 @@ const styles = StyleSheet.create({
     color: T.white,
     border: "none",
     borderRadius: T.radius.sm,
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: "'Poppins', sans-serif",
     fontWeight: 700,
     fontSize: "0.8rem",
     letterSpacing: "0.06em",
@@ -471,7 +479,7 @@ const styles = StyleSheet.create({
   },
   newsNote: {
     fontSize: "0.72rem",
-    color: T.textMuted,
+    color: "rgba(255,255,255,0.4)",
     textAlign: "center",
     marginTop: 8,
   },
@@ -503,7 +511,7 @@ const styles = StyleSheet.create({
     gap: "1.4rem",
   },
   relatedFullCard: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.lg,
     overflow: "hidden",
     border: `1px solid ${T.goldBorder}`,
@@ -527,17 +535,17 @@ const styles = StyleSheet.create({
     color: T.gold,
     letterSpacing: "0.13em",
     textTransform: "uppercase",
-    background: T.goldLight,
+    background: "rgba(212,175,55,0.08)",
     borderRadius: 4,
     padding: "3px 8px",
     border: `1px solid ${T.goldBorder}`,
     marginBottom: 8,
   },
   relatedFullTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.15rem",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     lineHeight: 1.25,
     margin: "0 0 0.6rem",
   },
@@ -560,7 +568,7 @@ const styles = StyleSheet.create({
   relatedDate: { fontSize: "0.71rem", color: T.textMuted },
   relatedReadTime: {
     fontSize: "0.71rem",
-    color: T.textMuted,
+    color: "rgba(255,255,255,0.4)",
     display: "flex",
     alignItems: "center",
     gap: 4,
@@ -633,7 +641,7 @@ export default function BlogDetails() {
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
-      <div style={styles.page}>
+      <div style={{...styles.page, background:"#0B0F1A", fontFamily:"'Poppins', sans-serif", paddingTop: 72}}>
         <style>{`
         @media (max-width: 960px) {
           .blog-layout { grid-template-columns: 1fr !important; gap: 2rem !important; }
