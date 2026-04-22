@@ -1,142 +1,3 @@
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-
-// const NAV = [
-//   { label: "Home", link: "/" },
-//   {
-//     label: "About",
-//     sub: [
-//       { label: "About Company", link: "/about" },
-//       { label: "Team Members", link: "/teams" },
-//     ],
-//   },
-//   { label: "Works", link: "/works" },
-//   {
-//     label: "Services",
-//     sub: [
-//       {
-//         label: "Web Design & Development",
-//         link: "/services/web-design-development",
-//       },
-//       { label: "Digital Marketing", link: "/services/digital-marketing" },
-//       { label: "BPO & Call Center Services", link: "/services/bpo-services" },
-//       { label: "App Development", link: "/services/app-development" },
-//       { label: "Graphic Design", link: "/services/graphic-design" },
-//       {
-//         label: "Photo & Video Production",
-//         link: "/services/photo-video-production",
-//       },
-//       { label: "Job Consultancy", link: "/services/job-consultancy" },
-//       { label: "Event Management", link: "/services/event-management" },
-//       { label: "Live Streaming", link: "/services/live-streaming" },
-//       {
-//         label: "Political Rallies & Events",
-//         link: "/services/political-rallies-events",
-//       },
-//     ],
-//   },
-//   { label: "Blogs", link: "/blogs" },
-//   { label: "Gallery", link: "/gallery" },
-//   { label: "Careers", link: "/career" },
-//   { label: "Contact", link: "/contact" },
-// ];
-
-// export default function Navbar({ solid, onQuote }) {
-//   const [open, setOpen] = useState(false);
-//   const [sub, setSub] = useState(null);
-//   return (
-//     <>
-//       <nav className={`navbar${solid ? " navbar--solid" : ""}`}>
-//         <Link to="/" className="navbar__logo">
-//           <img
-//             src="/static/logo.png"
-//             alt="Technosaga Logo"
-//             className="main-logo"
-//           />
-//         </Link>
-//         <ul className="navbar__nav">
-//           {NAV.map((item) => (
-//             <li key={item.label} className="nav-item">
-//               <Link to={item.link} className="nav-link">
-//                 {item.label}
-//                 {item.sub && <span className="nav-arrow">▾</span>}
-//               </Link>
-//               {item.sub && (
-//                 <div className="nav-drop">
-//                   {item.sub.map((s) => (
-//                     <Link key={s.label} to={s.link} className="drop-item">
-//                       {s.label}
-//                     </Link>
-//                   ))}
-//                 </div>
-//               )}
-//             </li>
-//           ))}
-//         </ul>
-//         <button className="navbar__cta" onClick={onQuote}>
-//           Get A Quote
-//         </button>
-//         <button
-//           className="navbar__burger"
-//           onClick={() => setOpen(!open)}
-//           aria-label="Menu"
-//         >
-//           <span />
-//           <span />
-//           <span />
-//         </button>
-//       </nav>
-//       <div className={`mobile-nav${open ? " mobile-nav--open" : ""}`}>
-//         {NAV.map((item) => (
-//           <div key={item.label}>
-//             <Link
-//               to={item.link}
-//               className="mob-link"
-//               onClick={(e) => {
-//                 if (item.sub) {
-//                   e.preventDefault();
-//                   setSub(sub === item.label ? null : item.label);
-//                 } else setOpen(false);
-//               }}
-//             >
-//               {item.label}
-//               {item.sub && <span>{sub === item.label ? "▴" : "▾"}</span>}
-//             </Link>
-//             {item.sub && (
-//               <div
-//                 className={`mob-sub${sub === item.label ? " mob-sub--open" : ""}`}
-//               >
-//                 {item.sub.map((s) => (
-//                   <Link
-//                     key={s.label}
-//                     to={s.link}
-//                     className="mob-sub-item"
-//                     onClick={() => setOpen(false)}
-//                   >
-//                     <span>{s.icon}</span>
-//                     {s.label}
-//                   </Link>
-//                 ))}
-//               </div>
-//             )}
-//           </div>
-//         ))}
-//         <div className="mob-cta">
-//           <button
-//             className="btn-primary btn-primary--full"
-//             onClick={() => {
-//               setOpen(false);
-//               onQuote();
-//             }}
-//           >
-//             Get A Free Quote →
-//           </button>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -146,7 +7,7 @@ const NAV = [
     label: "About",
     sub: [
       { label: "About Company", link: "/about", icon: "🏢" },
-      { label: "Team Members", link: "/teams", icon: "👥" },
+      { label: "Our Team", link: "/teams", icon: "👥" },
     ],
   },
   { label: "Works", link: "/works" },
@@ -154,69 +15,49 @@ const NAV = [
     label: "Services",
     wide: true,
     sub: [
-      {
-        label: "Web Design & Development",
-        link: "/services/web-design-development",
-        icon: "🌐",
-      },
-      {
-        label: "Digital Marketing",
-        link: "/services/digital-marketing",
-        icon: "📣",
-      },
-      {
-        label: "BPO & Call Center Services",
-        link: "/services/bpo-services",
-        icon: "🎧",
-      },
-      {
-        label: "App Development",
-        link: "/services/app-development",
-        icon: "📱",
-      },
+      { label: "Web Design & Development", link: "/services/web-design-development", icon: "🌐" },
+      { label: "Digital Marketing", link: "/services/digital-marketing", icon: "📣" },
+      { label: "BPO & Call Centre Services", link: "/services/bpo-services", icon: "🎧" },
+      { label: "App Development", link: "/services/app-development", icon: "📱" },
       { label: "Graphic Design", link: "/services/graphic-design", icon: "🎨" },
-      {
-        label: "Photo & Video Production",
-        link: "/services/photo-video-production",
-        icon: "🎬",
-      },
-      {
-        label: "Job Consultancy",
-        link: "/services/job-consultancy",
-        icon: "💼",
-      },
-      {
-        label: "Event Management",
-        link: "/services/event-management",
-        icon: "🎪",
-      },
+      { label: "Photo & Video Production", link: "/services/photo-video-production", icon: "🎬" },
+      { label: "Job Consultancy", link: "/services/job-consultancy", icon: "💼" },
+      { label: "Event Management", link: "/services/event-management", icon: "🎪" },
       { label: "Live Streaming", link: "/services/live-streaming", icon: "📡" },
-      {
-        label: "Political Rallies & Events",
-        link: "/services/political-rallies-events",
-        icon: "🏛️",
-      },
+      { label: "Political Rallies & Events", link: "/services/political-rallies-events", icon: "🏛️" },
     ],
   },
-  { label: "Blogs", link: "/blogs" },
+  { label: "Blog", link: "/blogs" },
   { label: "Gallery", link: "/gallery" },
   { label: "Careers", link: "/career" },
   { label: "Contact", link: "/contact" },
 ];
 
-export default function Navbar({ solid, onQuote }) {
+export default function Navbar({ onQuote }) {
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [sub, setSub] = useState(null);
   const [mobSub, setMobSub] = useState(null);
   const location = useLocation();
   const navRef = useRef(null);
+  const leaveTimer = useRef(null);
 
+  // Scroll detection for solid navbar
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handler, { passive: true });
+    handler();
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  // Close on route change
   useEffect(() => {
     setOpen(false);
     setSub(null);
     setMobSub(null);
   }, [location.pathname]);
 
+  // Close dropdown on outside click
   useEffect(() => {
     const handler = (e) => {
       if (navRef.current && !navRef.current.contains(e.target)) setSub(null);
@@ -225,161 +66,151 @@ export default function Navbar({ solid, onQuote }) {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  // Lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
   return (
     <>
-      {/* ── NAVBAR BAR ── */}
       <nav
         ref={navRef}
-        className={`navbar${solid ? " navbar--solid" : ""}`}
+        className={`nav2${scrolled ? " nav2--solid" : ""}`}
         role="navigation"
         aria-label="Main navigation"
       >
-        <Link to="/" className="navbar__logo" onClick={() => setSub(null)}>
-          <img
-            src="/static/logo.png"
-            alt="Technosaga Infotech"
-            className="main-logo"
-            loading="eager"
-            decoding="async"
-          />
-        </Link>
+        <div className="nav2__inner">
+          {/* Logo */}
+          <Link to="/" className="nav2__logo" onClick={() => setSub(null)}>
+            <img
+              src="/static/logo-new.png"
+              alt="Technosaga Infotech Pvt. Ltd."
+              className="nav2__logo-img"
+              loading="eager"
+            />
+            <span className="nav2__logo-text">
+              <span className="nav2__logo-main">Technosaga</span>
+              <span className="nav2__logo-sub">Infotech Pvt. Ltd.</span>
+            </span>
+          </Link>
 
-        {/* DESKTOP NAV */}
-        <ul className="navbar__nav">
-          {NAV.map((item) => (
-            <li
-              key={item.label}
-              className="nav-item"
-              onMouseEnter={() => item.sub && setSub(item.label)}
-              onMouseLeave={() => item.sub && setSub(null)}
-            >
-              {item.sub ? (
-                <button
-                  className="nav-link"
-                  aria-haspopup="true"
-                  aria-expanded={sub === item.label}
-                >
-                  {item.label}
-                  <span className="nav-caret" aria-hidden="true">
-                    ▾
-                  </span>
-                </button>
-              ) : (
-                <Link
-                  to={item.link}
-                  className="nav-link"
-                  onClick={() => setSub(null)}
-                >
-                  {item.label}
-                </Link>
-              )}
+          {/* Desktop navigation links */}
+          <ul className="nav2__links">
+            {NAV.map((item) => (
+              <li
+                key={item.label}
+                className="nav2__item"
+                onMouseEnter={() => { clearTimeout(leaveTimer.current); item.sub && setSub(item.label); }}
+                onMouseLeave={() => { if (item.sub) { leaveTimer.current = setTimeout(() => setSub(null), 150); } }}
+              >
+                {item.sub ? (
+                  <button
+                    className="nav2__link"
+                    aria-haspopup="true"
+                    aria-expanded={sub === item.label}
+                  >
+                    {item.label}
+                    <svg className="nav2__caret" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                      <path d="M1 3L5 7L9 3" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                    </svg>
+                  </button>
+                ) : (
+                  <Link to={item.link} className="nav2__link">
+                    {item.label}
+                  </Link>
+                )}
 
-              {item.sub && (
-                <div
-                  className={`nav-drop${item.wide ? " nav-drop--wide" : ""}${sub === item.label ? " nav-drop--open" : ""}`}
-                  role="menu"
-                >
-                  {item.sub.map((s) => (
-                    <Link
-                      key={s.label}
-                      to={s.link}
-                      className="drop-item"
-                      role="menuitem"
-                      onClick={() => setSub(null)}
-                    >
-                      <span className="drop-item__icon" aria-hidden="true">
-                        {s.icon}
-                      </span>
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
+                {item.sub && (
+                  <div
+                    className={`nav2__drop${item.wide ? " nav2__drop--wide" : ""}${sub === item.label ? " nav2__drop--open" : ""}`}
+                    role="menu"
+                    onMouseEnter={() => clearTimeout(leaveTimer.current)}
+                    onMouseLeave={() => { leaveTimer.current = setTimeout(() => setSub(null), 150); }}
+                  >
+                    {item.sub.map((s) => (
+                      <Link
+                        key={s.label}
+                        to={s.link}
+                        className="nav2__drop-item"
+                        role="menuitem"
+                        onClick={() => setSub(null)}
+                      >
+                        <span className="nav2__drop-icon">{s.icon}</span>
+                        {s.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
 
-        <button className="navbar__cta navbar__cta--desk" onClick={onQuote}>
-          Get A Quote
-        </button>
+          {/* Desktop CTA */}
+          <button className="nav2__cta" onClick={onQuote}>
+            Get a Quote
+          </button>
 
-        <button
-          className="navbar__burger"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-        >
-          <span className={`bline${open ? " bline--t" : ""}`} />
-          <span className={`bline${open ? " bline--m" : ""}`} />
-          <span className={`bline${open ? " bline--b" : ""}`} />
-        </button>
+          {/* Mobile burger */}
+          <button
+            className="nav2__burger"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            <span className={`nav2__bline${open ? " nav2__bline--t" : ""}`} />
+            <span className={`nav2__bline${open ? " nav2__bline--m" : ""}`} />
+            <span className={`nav2__bline${open ? " nav2__bline--b" : ""}`} />
+          </button>
+        </div>
       </nav>
 
-      {/* ── BACKDROP ── */}
+      {/* Mobile backdrop */}
       <div
-        className={`mob-backdrop${open ? " mob-backdrop--on" : ""}`}
+        className={`nav2__backdrop${open ? " nav2__backdrop--on" : ""}`}
         onClick={() => setOpen(false)}
         aria-hidden="true"
       />
 
-      {/* ── MOBILE DRAWER ──
-          Always in DOM so transform transition works.
-          Visibility hidden when closed so it's not tabbable.
-      ── */}
+      {/* Mobile drawer */}
       <aside
-        id="mobile-nav"
-        className={`mob-drawer${open ? " mob-drawer--open" : ""}`}
+        className={`nav2__drawer${open ? " nav2__drawer--open" : ""}`}
         aria-label="Mobile navigation"
         aria-hidden={!open}
       >
-        <button
-          className="mob-drawer__close"
-          onClick={() => setOpen(false)}
-          aria-label="Close menu"
-        >
-          ✕
-        </button>
+        {/* Drawer header */}
+        <div className="nav2__drawer-head">
+          <img src="/static/logo-new.png" alt="Technosaga" className="nav2__drawer-logo" />
+          <span className="nav2__drawer-brand">Technosaga <span>Infotech</span></span>
+          <button
+            className="nav2__drawer-close"
+            onClick={() => setOpen(false)}
+            aria-label="Close"
+          >✕</button>
+        </div>
 
-        <nav>
+        <nav className="nav2__drawer-nav">
           {NAV.map((item) => (
-            <div key={item.label} className="mob-row">
+            <div key={item.label} className="nav2__mob-row">
               {item.sub ? (
                 <button
-                  className="mob-link"
-                  onClick={() =>
-                    setMobSub(mobSub === item.label ? null : item.label)
-                  }
+                  className="nav2__mob-link"
+                  onClick={() => setMobSub(mobSub === item.label ? null : item.label)}
                   aria-expanded={mobSub === item.label}
                 >
                   {item.label}
-                  <span className="mob-caret" aria-hidden="true">
-                    {mobSub === item.label ? "▴" : "▾"}
-                  </span>
+                  <span className="nav2__mob-caret">{mobSub === item.label ? "▴" : "▾"}</span>
                 </button>
               ) : (
-                <Link to={item.link} className="mob-link">
+                <Link to={item.link} className="nav2__mob-link">
                   {item.label}
                 </Link>
               )}
-
-              {/* Mobile sub — always rendered, shown via max-height transition */}
               {item.sub && (
-                <div
-                  className={`mob-sub${mobSub === item.label ? " mob-sub--open" : ""}`}
-                >
+                <div className={`nav2__mob-sub${mobSub === item.label ? " nav2__mob-sub--open" : ""}`}>
                   {item.sub.map((s) => (
-                    <Link key={s.label} to={s.link} className="mob-sub-item">
-                      <span className="mob-sub-item__icon" aria-hidden="true">
-                        {s.icon}
-                      </span>
+                    <Link key={s.label} to={s.link} className="nav2__mob-sub-item">
+                      <span>{s.icon}</span>
                       {s.label}
                     </Link>
                   ))}
@@ -389,37 +220,89 @@ export default function Navbar({ solid, onQuote }) {
           ))}
         </nav>
 
-        <div className="mob-footer">
-          <button className="btn-primary btn-primary--full" onClick={onQuote}>
-            Get A Free Quote →
+        <div className="nav2__drawer-foot">
+          <button className="nav2__drawer-cta" onClick={() => { setOpen(false); onQuote(); }}>
+            Get a Free Quote →
           </button>
+          <a href="tel:+919155031859" className="nav2__drawer-phone">
+            📞 +91 9155031859
+          </a>
         </div>
       </aside>
 
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap');
 
-        /* ══ LOGO ══ */
-        .navbar__logo {
+        /* ── NAVBAR ─────────────────────────────────── */
+        .nav2 {
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          z-index: 900;
+          height: 72px;
+          background: linear-gradient(180deg, rgba(11,15,26,0.96) 0%, rgba(11,15,26,0.7) 100%);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(212,175,55,0.15);
+          transition: background 0.3s, border-color 0.3s, height 0.3s, box-shadow 0.3s;
+        }
+        .nav2--solid {
+          background: rgba(11,15,26,0.98);
+          border-bottom-color: rgba(212,175,55,0.25);
+          box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+          height: 64px;
+        }
+
+        .nav2__inner {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1.5rem;
+          height: 100%;
           display: flex;
           align-items: center;
-          flex-shrink: 0;
+          gap: 1.5rem;
+        }
+
+        /* ── LOGO ── */
+        .nav2__logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
           text-decoration: none;
+          flex-shrink: 0;
         }
-        .main-logo {
-          height: 40px;
-          width: auto;
-          display: block;
+        .nav2__logo-img {
+          width: 44px;
+          height: 44px;
           object-fit: contain;
+          filter: drop-shadow(0 0 8px rgba(212,175,55,0.4));
+          transition: filter 0.3s;
         }
-
-        /* ══ NAVBAR LAYOUT ══ */
-        .navbar {
+        .nav2__logo:hover .nav2__logo-img {
+          filter: drop-shadow(0 0 14px rgba(212,175,55,0.7));
+        }
+        .nav2__logo-text {
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          line-height: 1.1;
+        }
+        .nav2__logo-main {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 800;
+          font-size: 1.05rem;
+          color: #D4AF37;
+          letter-spacing: 0.02em;
+        }
+        .nav2__logo-sub {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 400;
+          font-size: 0.62rem;
+          color: rgba(255,255,255,0.5);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
         }
 
-        /* ══ DESKTOP NAV ══ */
-        .navbar__nav {
+        /* ── DESKTOP LINKS ── */
+        .nav2__links {
           display: flex;
           align-items: center;
           list-style: none;
@@ -427,338 +310,319 @@ export default function Navbar({ solid, onQuote }) {
           padding: 0;
           flex: 1;
           justify-content: center;
+          gap: 0;
         }
-
-        .nav-item {
-          position: relative;
-        }
-
-        .nav-link {
+        .nav2__item { position: relative; }
+        .nav2__link {
           display: inline-flex;
           align-items: center;
           gap: 4px;
-          padding: 0.5rem 0.75rem;
-          font-size: 0.84rem;
+          padding: 0.45rem 0.7rem;
+          font-family: 'Poppins', sans-serif;
+          font-size: 0.82rem;
           font-weight: 500;
-          color: inherit;
+          color: rgba(255,255,255,0.8);
           text-decoration: none;
-          white-space: nowrap;
           background: none;
           border: none;
           cursor: pointer;
-          font-family: inherit;
-          line-height: 1;
+          white-space: nowrap;
           transition: color 0.18s;
+          position: relative;
         }
-        .nav-link:hover { color: #CF9645; }
-
-        .nav-caret {
-          font-size: 0.58rem;
-          opacity: 0.7;
-        }
-
-        /* ══════════════════════════════════════
-           DESKTOP DROPDOWN
-
-           FIX 1 — POSITION:
-           Both dropdowns use left: 0 so they open
-           directly below and left-aligned with their
-           trigger nav-item. This keeps the dropdown
-           beside / under the button, not floating away.
-
-           For the wide Services dropdown we use
-           left: 0 too but allow it to be wider than
-           the trigger. If it would overflow the right
-           edge the browser clips it — so we also set
-           right: auto and let the min-width do the work.
-        ══════════════════════════════════════ */
-        .nav-drop {
+        .nav2__link::after {
+          content: '';
           position: absolute;
-          top: calc(100% + 2px);
-          left: 0;              /* aligned to left of its nav-item */
-          min-width: 200px;
-          background: #ffffff;
-          border: 1px solid rgba(207,150,69,0.25);
-          border-radius: 10px;
-          padding: 6px 0;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+          bottom: -2px; left: 50%; right: 50%;
+          height: 2px;
+          background: #D4AF37;
+          border-radius: 2px;
+          transition: left 0.25s, right 0.25s;
+        }
+        .nav2__link:hover { color: #D4AF37; }
+        .nav2__link:hover::after { left: 0.7rem; right: 0.7rem; }
+
+        .nav2__caret {
+          flex-shrink: 0;
+          opacity: 0.5;
+          margin-top: 1px;
+        }
+
+        /* ── DROPDOWN ── */
+        .nav2__drop {
+          position: absolute;
+          top: calc(100% + 0px);
+          left: 0;
+          min-width: 210px;
+          background: #0f1521;
+          border: 1px solid rgba(212,175,55,0.2);
+          border-radius: 12px;
+          padding: 8px;
+          box-shadow: 0 16px 48px rgba(0,0,0,0.5);
           z-index: 1000;
-          /* Hidden by default — shown with visibility+opacity
-             so we can transition it without touching display */
           visibility: hidden;
           opacity: 0;
           pointer-events: none;
-          transform: translateY(-4px);
-          transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+          transform: translateY(4px);
+          transition: opacity 0.2s, transform 0.2s, visibility 0s linear 0.2s;
+          /* Bridge gap so mouse doesn't lose hover when moving from nav to dropdown */
+          margin-top: 0px;
         }
-        .nav-drop--open {
+        /* Invisible bridge between nav item and dropdown */
+        .nav2__item::after {
+          content: '';
+          position: absolute;
+          bottom: -12px;
+          left: 0;
+          right: 0;
+          height: 12px;
+          background: transparent;
+        }
+        .nav2__drop--open {
           visibility: visible;
           opacity: 1;
           pointer-events: auto;
           transform: translateY(0);
-          transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0s;
+          transition: opacity 0.2s, transform 0.2s, visibility 0s;
         }
-
-        /* Wide dropdown (Services) — 2-column grid.
-           Anchored left: 0 from its nav-item.
-           If that causes right-overflow on small desktops,
-           swap to right: 0 in the media query below. */
-        .nav-drop--wide {
-          min-width: 460px;
+        .nav2__drop--wide {
+          position: fixed;
+          top: 64px;
+          left: 50%;
+          transform: translateX(-50%);
+          min-width: 520px;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 2px;
-          padding: 8px;
-          left: auto;
-          right: auto;
-          position: fixed;
-          top: 60px;
-          left: 50%;
+          gap: 4px;
+        }
+        .nav2__drop--wide.nav2__drop--open {
           transform: translateX(-50%);
         }
 
-        /* On smaller desktops where left:0 would overflow right,
-           anchor from the right instead */
-        
-
-        .drop-item {
+        .nav2__drop-item {
           display: flex;
           align-items: center;
-          gap: 8px;
-          padding: 0.55rem 0.9rem;
-          color: #1a1208;
+          gap: 10px;
+          padding: 0.6rem 0.85rem;
+          color: rgba(255,255,255,0.72);
           text-decoration: none;
-          font-size: 0.81rem;
+          font-family: 'Poppins', sans-serif;
+          font-size: 0.8rem;
           font-weight: 500;
-          border-radius: 6px;
+          border-radius: 8px;
           white-space: nowrap;
-          transition: background 0.13s, color 0.13s;
+          transition: background 0.15s, color 0.15s;
         }
-        .drop-item:hover {
-          background: #fdf6e9;
-          color: #CF9645;
+        .nav2__drop-item:hover {
+          background: rgba(212,175,55,0.1);
+          color: #D4AF37;
         }
-        .drop-item__icon {
-          flex-shrink: 0;
-          font-size: 0.95rem;
-          width: 20px;
+        .nav2__drop-icon {
+          width: 22px;
           text-align: center;
+          flex-shrink: 0;
+          font-size: 0.9rem;
         }
 
-        /* ══ DESKTOP CTA ══ */
-        .navbar__cta--desk { flex-shrink: 0; }
+        /* ── DESKTOP CTA ── */
+        .nav2__cta {
+          flex-shrink: 0;
+          background: linear-gradient(135deg, #D4AF37 0%, #b8962d 100%);
+          color: #0B0F1A;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          font-size: 0.82rem;
+          padding: 10px 20px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          white-space: nowrap;
+          transition: transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 4px 16px rgba(212,175,55,0.3);
+          letter-spacing: 0.02em;
+        }
+        .nav2__cta:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 22px rgba(212,175,55,0.45);
+        }
 
-        /* ══════════════════════════════════════
-           BURGER — hidden on desktop (≥1025px)
-        ══════════════════════════════════════ */
-        .navbar__burger {
+        /* ── BURGER ── */
+        .nav2__burger {
           display: none;
           flex-direction: column;
           justify-content: center;
           gap: 5px;
-          width: 36px;
-          height: 36px;
+          width: 36px; height: 36px;
           background: none;
           border: none;
           cursor: pointer;
           padding: 5px;
-          color: inherit;
           flex-shrink: 0;
         }
-        .bline {
+        .nav2__bline {
           display: block;
-          width: 100%;
-          height: 2px;
-          background: currentColor;
+          width: 100%; height: 2px;
+          background: rgba(255,255,255,0.8);
           border-radius: 2px;
           transition: transform 0.25s, opacity 0.2s;
           transform-origin: center;
         }
-        .bline--t { transform: translateY(7px) rotate(45deg); }
-        .bline--m { opacity: 0; transform: scaleX(0); }
-        .bline--b { transform: translateY(-7px) rotate(-45deg); }
+        .nav2__bline--t { transform: translateY(7px) rotate(45deg); background: #D4AF37; }
+        .nav2__bline--m { opacity: 0; transform: scaleX(0); }
+        .nav2__bline--b { transform: translateY(-7px) rotate(-45deg); background: #D4AF37; }
 
-        /* ══════════════════════════════════════
-           BACKDROP — hidden on desktop
-        ══════════════════════════════════════ */
-        .mob-backdrop {
+        /* ── BACKDROP ── */
+        .nav2__backdrop {
           display: none;
-          position: fixed;
-          inset: 0;
-          background: rgba(0,0,0,0.5);
-          z-index: 198;
-          backdrop-filter: blur(2px);
+          position: fixed; inset: 0;
+          background: rgba(0,0,0,0.6);
+          z-index: 950;
           opacity: 0;
-          transition: opacity 0.28s;
           pointer-events: none;
+          transition: opacity 0.28s;
+          backdrop-filter: blur(3px);
         }
-        .mob-backdrop--on {
+        .nav2__backdrop--on {
           opacity: 1;
           pointer-events: auto;
         }
 
-        /* ══════════════════════════════════════
-           MOBILE DRAWER — hidden on desktop.
-
-           FIX 2 — TRANSITION:
-           We keep display:flex always active inside
-           the ≤1024px breakpoint and use transform
-           to slide it. display:none kills transitions,
-           so we avoid it inside the mobile breakpoint.
-
-           Outside the breakpoint (desktop) it stays
-           display:none so it's completely inert.
-        ══════════════════════════════════════ */
-        .mob-drawer {
-          display: none; /* off on desktop */
+        /* ── MOBILE DRAWER ── */
+        .nav2__drawer {
+          display: none;
           position: fixed;
-          top: 0;
-          right: 0;
+          top: 0; right: 0;
           height: 100dvh;
-          padding: 3rem 0 0rem 0rem;
-          width: min(300px, 82vw);
-          background: #0e0a04;
-          z-index: 199;
+          width: min(320px, 85vw);
+          background: #0B0F1A;
+          border-left: 1px solid rgba(212,175,55,0.15);
+          z-index: 999;
           flex-direction: column;
-          /* overflow-y on the drawer itself — but sub-menus
-             use max-height accordion so they expand in-flow,
-             no clipping issue */
-          overflow-y: auto;
           transform: translateX(100%);
-          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           visibility: hidden;
+          transition: transform 0.32s cubic-bezier(0.4,0,0.2,1), visibility 0s linear 0.32s;
+          overflow-y: auto;
         }
-        .mob-drawer--open {
+        .nav2__drawer--open {
           transform: translateX(0);
           visibility: visible;
+          transition: transform 0.32s cubic-bezier(0.4,0,0.2,1), visibility 0s;
         }
 
-        .mob-drawer__close {
+        .nav2__drawer-head {
           display: flex;
-          align-self: flex-end;
-          padding: 1rem 1.2rem 0.5rem;
-          background: none;
-          border: none;
-          color: rgba(255,255,255,0.45);
-          font-size: 1.1rem;
+          align-items: center;
+          gap: 10px;
+          padding: 1.2rem 1.2rem;
+          border-bottom: 1px solid rgba(212,175,55,0.12);
+        }
+        .nav2__drawer-logo {
+          width: 38px; height: 38px;
+          object-fit: contain;
+        }
+        .nav2__drawer-brand {
+          flex: 1;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          font-size: 0.95rem;
+          color: #fff;
+        }
+        .nav2__drawer-brand span { color: #D4AF37; }
+        .nav2__drawer-close {
+          background: none; border: none;
+          color: rgba(255,255,255,0.4);
+          font-size: 1rem;
           cursor: pointer;
+          padding: 6px;
           transition: color 0.18s;
         }
-        .mob-drawer__close:hover { color: #CF9645; }
+        .nav2__drawer-close:hover { color: #D4AF37; }
 
-        /* ══ MOBILE ROWS ══ */
-        .mob-row {
-          border-bottom: 1px solid rgba(207,150,69,0.1);
+        .nav2__drawer-nav { flex: 1; padding: 0.5rem 0; }
+
+        .nav2__mob-row {
+          border-bottom: 1px solid rgba(212,175,55,0.07);
         }
-
-        .mob-link {
+        .nav2__mob-link {
           display: flex;
           align-items: center;
           justify-content: space-between;
           width: 100%;
-          padding: 0.88rem 1.4rem;
-          color: rgba(255,255,255,0.82);
-          text-decoration: none;
-          font-size: 0.94rem;
+          padding: 0.85rem 1.4rem;
+          color: rgba(255,255,255,0.8);
+          font-family: 'Poppins', sans-serif;
+          font-size: 0.9rem;
           font-weight: 500;
-          background: none;
-          border: none;
-          font-family: inherit;
+          text-decoration: none;
+          background: none; border: none;
           cursor: pointer;
-          text-align: left;
           transition: color 0.15s, background 0.15s;
         }
-        .mob-link:hover,
-        .mob-link:focus-visible {
-          color: #CF9645;
-          background: rgba(207,150,69,0.06);
-          outline: none;
-        }
+        .nav2__mob-link:hover { color: #D4AF37; background: rgba(212,175,55,0.05); }
+        .nav2__mob-caret { font-size: 0.65rem; color: rgba(255,255,255,0.35); }
 
-        .mob-caret {
-          font-size: 0.68rem;
-          color: rgba(255,255,255,0.4);
-          flex-shrink: 0;
-        }
-
-        /* ══════════════════════════════════════
-           MOBILE SUB-MENU
-
-           FIX 2b — SUB VISIBILITY:
-           Always rendered in the DOM (not conditionally).
-           Uses max-height accordion so it expands in
-           normal document flow — no overflow clipping.
-           display:none / conditional rendering caused
-           the sub to appear but get clipped by the
-           drawer's overflow-y:auto.
-        ══════════════════════════════════════ */
-        .mob-sub {
+        .nav2__mob-sub {
           max-height: 0;
           overflow: hidden;
-          background: rgba(255,255,255,0.03);
-          border-top: 0px solid rgba(207,150,69,0.08);
-          transition: max-height 0.28s ease, border-top-width 0.01s;
+          background: rgba(255,255,255,0.02);
+          transition: max-height 0.3s ease;
         }
-        .mob-sub--open {
-          /* Large enough for 10 items × ~44px each */
-          max-height: 600px;
-          border-top: 1px solid rgba(207,150,69,0.08);
-        }
+        .nav2__mob-sub--open { max-height: 700px; }
 
-        .mob-sub-item {
+        .nav2__mob-sub-item {
           display: flex;
           align-items: center;
           gap: 10px;
-          padding: 0.72rem 1.4rem 0.72rem 1.8rem;
-          color: rgba(255,255,255,0.58);
+          padding: 0.7rem 1.4rem 0.7rem 1.8rem;
+          color: rgba(255,255,255,0.55);
+          font-family: 'Poppins', sans-serif;
+          font-size: 0.82rem;
           text-decoration: none;
-          font-size: 0.84rem;
           transition: color 0.15s, background 0.15s;
         }
-        .mob-sub-item:hover,
-        .mob-sub-item:focus-visible {
-          color: #CF9645;
-          background: rgba(207,150,69,0.06);
-          outline: none;
+        .nav2__mob-sub-item:hover { color: #D4AF37; background: rgba(212,175,55,0.06); }
+
+        .nav2__drawer-foot {
+          padding: 1.2rem;
+          border-top: 1px solid rgba(212,175,55,0.1);
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
         }
-        .mob-sub-item__icon {
-          font-size: 0.95rem;
-          flex-shrink: 0;
-          width: 20px;
+        .nav2__drawer-cta {
+          width: 100%;
+          background: linear-gradient(135deg, #D4AF37 0%, #b8962d 100%);
+          color: #0B0F1A;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          font-size: 0.9rem;
+          padding: 13px 20px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          box-shadow: 0 4px 16px rgba(212,175,55,0.3);
+        }
+        .nav2__drawer-phone {
           text-align: center;
+          color: rgba(255,255,255,0.5);
+          font-size: 0.82rem;
+          text-decoration: none;
+          font-family: 'Poppins', sans-serif;
         }
 
-        /* ══ MOBILE FOOTER CTA ══ */
-        .mob-footer {
-          margin-top: auto;
-          padding: 1.4rem;
-          border-top: 1px solid rgba(207,150,69,0.1);
-        }
-        .btn-primary--full { width: 100%; }
-
-        /* ══════════════════════════════════════
-           RESPONSIVE BREAKPOINT — ≤ 1024px
-        ══════════════════════════════════════ */
+        /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
-          /* Hide desktop elements */
-          .navbar__nav        { display: none; }
-          .navbar__cta--desk  { display: none; }
-
-          /* Show burger */
-          .navbar__burger     { display: flex; }
-
-          /* Activate backdrop and drawer */
-          .mob-backdrop       { display: block; }
-          .mob-drawer         { display: flex; }  /* now transform transition works */
-
-          /* Logo */
-          .main-logo          { height: 34px; }
+          .nav2__links { display: none; }
+          .nav2__cta { display: none; }
+          .nav2__burger { display: flex; }
+          .nav2__backdrop { display: block; }
+          .nav2__drawer { display: flex; }
+          .nav2__logo-text { display: none; }
+          .nav2__logo-img { width: 40px; height: 40px; }
         }
-
-        @media (max-width: 600px) {
-          .main-logo          { height: 30px; }
+        @media (min-width: 1025px) {
+          .nav2__logo-text { display: flex; }
         }
-
       `}</style>
     </>
   );
