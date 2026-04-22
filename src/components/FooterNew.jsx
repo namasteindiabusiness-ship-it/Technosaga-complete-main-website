@@ -153,7 +153,7 @@ export default function FooterNew() {
                 {[
                   { icon: "📍", label: "M2/12, Near Yamuna Apartment, Boring Road, Patna – 800001, Bihar" },
                   { icon: "📞", label: "+91 9155031859", link: "tel:+919155031859" },
-                  { icon: "✉️", label: "technosagainfotech@mail.com", link: "mailto:technosagainfotech@mail.com" },
+                  { icon: "✉️", label: "info@technosagainfotech.com", link: "mailto:info@technosagainfotech.com" },
                   { icon: "🌐", label: "www.technosagainfotech.in", link: "https://technosagainfotech.in" },
                 ].map((c) => (
                   <li key={c.label} className="ft2__contact-item">
@@ -194,6 +194,9 @@ export default function FooterNew() {
             Designed & Developed by{" "}
             <a href="https://technosagainfotech.in" className="ft2__made-link">Technosaga Infotech</a>
           </span>
+          <Link to="/webs/login" className="ft2__admin-btn">
+            🔐 Admin Login
+          </Link>
         </div>
       </div>
 
@@ -446,6 +449,28 @@ export default function FooterNew() {
           text-decoration: none;
         }
         .ft2__made-link:hover { text-decoration: underline; }
+
+        /* Admin Login Button */
+        .ft2__admin-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: rgba(255,255,255,0.35);
+          text-decoration: none;
+          padding: 5px 12px;
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 20px;
+          font-family: 'Poppins', sans-serif;
+          transition: color 0.2s, border-color 0.2s, background 0.2s;
+          white-space: nowrap;
+        }
+        .ft2__admin-btn:hover {
+          color: #D4AF37;
+          border-color: rgba(212,175,55,0.35);
+          background: rgba(212,175,55,0.06);
+        }
 
         /* Responsive */
         @media (max-width: 1024px) {
