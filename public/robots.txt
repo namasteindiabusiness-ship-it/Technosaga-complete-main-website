@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow admin pages from crawling
+Disallow: /dashboard/
+Disallow: /webs/login
+
+Sitemap: https://www.technosagainfotech.in/sitemap.xml
