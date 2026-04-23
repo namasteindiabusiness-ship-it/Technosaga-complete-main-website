@@ -11,19 +11,27 @@ import { structuredData } from "../../libs/static";
 
 const StyleSheet = { create: (s) => s };
 
+/* ── GLOBAL DARK THEME OVERRIDE ── */
+const GLOBAL_CSS = `
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+  body { background: #0B0F1A; }
+`;
+
+
+
 const T = {
-  gold: "#CF9645",
-  goldDark: "#b8762a",
-  goldLight: "#fdf6e9",
-  goldBorder: "rgba(207,150,69,0.22)",
-  bg: "#f8f4ef",
-  white: "#ffffff",
-  dark: "#0e0a04",
-  darkMid: "#1a1005",
-  darkSoft: "#2e1f08",
-  text: "#1a1208",
-  textMid: "#5a4020",
-  textMuted: "#9e8c6e",
+  gold: "#D4AF37",
+  goldDark: "#b8962d",
+  goldLight: "rgba(212,175,55,0.08)",
+  goldBorder: "rgba(212,175,55,0.2)",
+  bg: "#0B0F1A",
+  white: "#fff",
+  dark: "#0B0F1A",
+  darkMid: "#0f1521",
+  darkSoft: "#121826",
+  text: "rgba(255,255,255,0.85)",
+  textMid: "rgba(255,255,255,0.6)",
+  textMuted: "rgba(255,255,255,0.4)",
   radius: { sm: 6, md: 10, lg: 14, xl: 20 },
 };
 
@@ -170,8 +178,8 @@ const FAQ_SCHEMA = {
 
 const styles = StyleSheet.create({
   page: {
-    fontFamily: "'DM Sans', sans-serif",
-    background: T.bg,
+    fontFamily: "'Poppins', sans-serif",
+    background: "#0B0F1A",
     minHeight: "100vh",
   },
 
@@ -182,7 +190,7 @@ const styles = StyleSheet.create({
     minHeight: 520,
     display: "flex",
     alignItems: "center",
-    marginTop: 90,
+    marginTop: 72,
   },
   heroBgImg: {
     position: "absolute",
@@ -214,8 +222,8 @@ const styles = StyleSheet.create({
     display: "inline-flex",
     alignItems: "center",
     gap: 8,
-    background: "rgba(207,150,69,0.15)",
-    border: "1px solid rgba(207,150,69,0.3)",
+    background: "rgba(212,175,55,0.15)",
+    border: "1px solid rgba(212,175,55,0.3)",
     borderRadius: 100,
     padding: "5px 16px 5px 10px",
     marginBottom: "1.2rem",
@@ -235,7 +243,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   heroTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "clamp(2.2rem, 4.5vw, 3.6rem)",
     fontWeight: 700,
     color: T.white,
@@ -298,7 +306,7 @@ const styles = StyleSheet.create({
     padding: "5px 14px",
     borderRadius: 100,
     textTransform: "uppercase",
-    boxShadow: "0 4px 14px rgba(207,150,69,0.4)",
+    boxShadow: "0 4px 14px rgba(212,175,55,0.4)",
     zIndex: 3,
     whiteSpace: "nowrap",
   },
@@ -306,7 +314,7 @@ const styles = StyleSheet.create({
     borderRadius: T.radius.xl,
     overflow: "hidden",
     position: "relative",
-    border: "1px solid rgba(207,150,69,0.25)",
+    border: "1px solid rgba(212,175,55,0.25)",
   },
   heroImg: {
     width: "100%",
@@ -330,7 +338,7 @@ const styles = StyleSheet.create({
     background: "rgba(14,10,4,0.72)",
     backdropFilter: "blur(8px)",
     WebkitBackdropFilter: "blur(8px)",
-    border: "1px solid rgba(207,150,69,0.25)",
+    border: "1px solid rgba(212,175,55,0.25)",
     borderRadius: T.radius.lg,
     padding: "1rem 1.2rem",
     display: "grid",
@@ -341,12 +349,12 @@ const styles = StyleSheet.create({
   heroStatDividerV: {
     width: 1,
     height: 32,
-    background: "rgba(207,150,69,0.2)",
+    background: "rgba(212,175,55,0.2)",
     margin: "0 auto",
   },
   heroStatItem: { textAlign: "center" },
   heroStatNum: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.55rem",
     fontWeight: 700,
     color: T.gold,
@@ -376,17 +384,17 @@ const styles = StyleSheet.create({
   },
   eyebrowLine: { width: 22, height: 2, background: T.gold, borderRadius: 2 },
   sectionTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "clamp(1.8rem, 3.2vw, 2.8rem)",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     margin: "0 0 0.8rem",
     lineHeight: 1.12,
   },
   titleAccent: { color: T.gold },
   sectionSub: {
     fontSize: "0.92rem",
-    color: T.textMuted,
+    color: "rgba(255,255,255,0.4)",
     maxWidth: 560,
     margin: "0 auto",
     lineHeight: 1.75,
@@ -399,7 +407,7 @@ const styles = StyleSheet.create({
     gap: "1.3rem",
   },
   serviceCard: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.lg,
     padding: "1.8rem 1.6rem",
     border: `1px solid ${T.goldBorder}`,
@@ -410,7 +418,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: T.radius.md,
-    background: T.goldLight,
+    background: "rgba(212,175,55,0.08)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -419,13 +427,13 @@ const styles = StyleSheet.create({
     border: `1px solid ${T.goldBorder}`,
   },
   serviceTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.15rem",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     margin: "0 0 0.5rem",
   },
-  serviceDesc: { fontSize: "0.84rem", color: T.textMuted, lineHeight: 1.7 },
+  serviceDesc: { fontSize: "0.84rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 },
   serviceBarWrap: {
     marginTop: "1rem",
     height: 2,
@@ -442,7 +450,7 @@ const styles = StyleSheet.create({
 
   /* ── PROCESS ── */
   processBg: {
-    background: `linear-gradient(180deg, ${T.bg} 0%, #f0e8dc 100%)`,
+    background: `linear-gradient(180deg, #0B0F1A 0%, "#0f1521" 100%)`,
     padding: "5rem 0",
   },
   processGrid: {
@@ -454,7 +462,7 @@ const styles = StyleSheet.create({
     gap: "1.4rem",
   },
   processCard: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.xl,
     overflow: "hidden",
     border: `1px solid ${T.goldBorder}`,
@@ -475,7 +483,7 @@ const styles = StyleSheet.create({
     left: 12,
     background: T.gold,
     color: T.white,
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1rem",
     fontWeight: 700,
     padding: "4px 12px",
@@ -484,17 +492,17 @@ const styles = StyleSheet.create({
   },
   processBody: { padding: "1.3rem 1.5rem 1.6rem" },
   processTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.15rem",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     margin: "0 0 0.45rem",
   },
-  processDesc: { fontSize: "0.83rem", color: T.textMuted, lineHeight: 1.7 },
+  processDesc: { fontSize: "0.83rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 },
 
   /* ── ABOUT SECTION ── */
   aboutBg: {
-    background: T.white,
+    background: "#121826",
     padding: "5rem 0",
     borderTop: `1px solid ${T.goldBorder}`,
   },
@@ -531,7 +539,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 24,
     left: -20,
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.lg,
     padding: "1rem 1.3rem",
     boxShadow: "0 8px 28px rgba(0,0,0,0.12)",
@@ -541,7 +549,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   aboutBadgeNum: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "2rem",
     fontWeight: 700,
     color: T.gold,
@@ -549,25 +557,25 @@ const styles = StyleSheet.create({
   },
   aboutBadgeLabel: {
     fontSize: "0.78rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     fontWeight: 500,
     lineHeight: 1.4,
   },
   aboutTextCol: {},
   aboutP: {
     fontSize: "0.94rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     lineHeight: 1.85,
     margin: "0 0 1.1rem",
   },
   aboutHighlight: {
-    background: T.goldLight,
+    background: "rgba(212,175,55,0.08)",
     borderLeft: `4px solid ${T.gold}`,
     borderRadius: `0 ${T.radius.md}px ${T.radius.md}px 0`,
     padding: "1rem 1.3rem",
     margin: "1.5rem 0",
     fontSize: "0.95rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     lineHeight: 1.75,
     fontStyle: "italic",
   },
@@ -591,7 +599,7 @@ const styles = StyleSheet.create({
   },
   aboutCheckText: {
     fontSize: "0.88rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     lineHeight: 1.6,
     fontWeight: 500,
   },
@@ -611,7 +619,7 @@ const styles = StyleSheet.create({
     height: 64,
     borderRadius: T.radius.md,
     background: "rgba(255,255,255,0.06)",
-    border: "1px solid rgba(207,150,69,0.15)",
+    border: "1px solid rgba(212,175,55,0.15)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -639,7 +647,7 @@ const styles = StyleSheet.create({
     gap: "1.4rem",
   },
   testimonialCard: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.xl,
     padding: "2rem 1.8rem",
     border: `1px solid ${T.goldBorder}`,
@@ -655,7 +663,7 @@ const styles = StyleSheet.create({
   },
   testimonialText: {
     fontSize: "0.88rem",
-    color: T.textMid,
+    color: "rgba(255,255,255,0.6)",
     lineHeight: 1.78,
     margin: "0 0 1.4rem",
     fontStyle: "italic",
@@ -676,7 +684,7 @@ const styles = StyleSheet.create({
     border: `2px solid ${T.goldBorder}`,
   },
   testimonialName: { fontSize: "0.86rem", fontWeight: 600, color: T.text },
-  testimonialRole: { fontSize: "0.74rem", color: T.textMuted, marginTop: 1 },
+  testimonialRole: { fontSize: "0.74rem", color: "rgba(255,255,255,0.4)", marginTop: 1 },
 
   /* ── FAQ ── */
   faqList: {
@@ -687,7 +695,7 @@ const styles = StyleSheet.create({
     gap: "0.8rem",
   },
   faqItem: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.md,
     border: `1px solid ${T.goldBorder}`,
     boxShadow: "0 1px 8px rgba(160,110,30,0.06)",
@@ -701,10 +709,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     background: "transparent",
     border: "none",
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: "'Poppins', sans-serif",
     fontSize: "0.93rem",
     fontWeight: 600,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     cursor: "pointer",
     textAlign: "left",
     gap: "1rem",
@@ -712,7 +720,7 @@ const styles = StyleSheet.create({
   faqAnswer: {
     padding: "1rem 1.4rem 1.2rem",
     fontSize: "0.88rem",
-    color: T.textMuted,
+    color: "rgba(255,255,255,0.4)",
     lineHeight: 1.75,
     borderTop: `1px solid ${T.goldBorder}`,
   },
@@ -868,7 +876,7 @@ export default function WebDesignDevelopment() {
         </script>
       </Helmet>
 
-      <div style={styles.page}>
+      <div style={{...styles.page, background:"#0B0F1A", fontFamily:"'Poppins', sans-serif", paddingTop: 72}}>
         <style>{`
           @media (max-width: 1024px) {
             .tech-grid { grid-template-columns: repeat(4, 1fr) !important; }

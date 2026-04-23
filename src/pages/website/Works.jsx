@@ -4,17 +4,17 @@ import { structuredData } from "../../libs/static";
 import { Link } from "react-router-dom";
 
 const T = {
-  gold: "#CF9645",
-  goldLight: "#fdf6e9",
-  goldBorder: "rgba(207,150,69,0.22)",
-  bg: "#f8f4ef",
-  white: "#ffffff",
-  dark: "#0e0a04",
-  darkMid: "#1a1005",
-  darkSoft: "#2e1f08",
-  text: "#1a1208",
-  textMid: "#5a4020",
-  textMuted: "#9e8c6e",
+  gold: "#D4AF37",
+  goldLight: "rgba(212,175,55,0.08)",
+  goldBorder: "rgba(212,175,55,0.2)",
+  bg: "#0B0F1A",
+  white: "#fff",
+  dark: "#0B0F1A",
+  darkMid: "#0f1521",
+  darkSoft: "#121826",
+  text: "rgba(255,255,255,0.85)",
+  textMid: "rgba(255,255,255,0.6)",
+  textMuted: "rgba(255,255,255,0.4)",
   radius: { sm: 6, md: 10, lg: 14, xl: 20 },
 };
 
@@ -65,7 +65,7 @@ const CAT_COLORS = {
   "Photo & Video": { bg: "rgba(245,158,11,0.18)", text: "#fcd34d" },
   "Event Management": { bg: "rgba(239,68,68,0.18)", text: "#fca5a5" },
   "Live Streaming": { bg: "rgba(20,184,166,0.18)", text: "#99f6e4" },
-  "Political Events": { bg: "rgba(207,150,69,0.22)", text: "#CF9645" },
+  "Political Events": { bg: "rgba(212,175,55,0.22)", text: "#CF9645" },
 };
 
 const IcoClose = () => (
@@ -224,7 +224,7 @@ function WorkCard({ work, onClick, index }) {
       >
         <div
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontSize: "0.97rem",
             fontWeight: 700,
             color: T.white,
@@ -286,8 +286,8 @@ export default function OurWorks() {
 
       <div
         style={{
-          fontFamily: "'DM Sans', sans-serif",
-          background: T.bg,
+          fontFamily: "'Poppins', sans-serif",
+          background: "#0B0F1A",
           minHeight: "100vh",
         }}
       >
@@ -321,7 +321,7 @@ export default function OurWorks() {
             position: "relative",
             overflow: "hidden",
             textAlign: "center",
-            marginTop: 90,
+            marginTop: 72,
           }}
         >
           {/* Glow */}
@@ -332,7 +332,7 @@ export default function OurWorks() {
               height: 700,
               borderRadius: "50%",
               background:
-                "radial-gradient(circle, rgba(207,150,69,0.1) 0%, transparent 65%)",
+                "radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 65%)",
               top: "50%",
               left: "50%",
               transform: "translate(-50%,-50%)",
@@ -346,7 +346,7 @@ export default function OurWorks() {
               width: 500,
               height: 500,
               borderRadius: "50%",
-              border: "1px solid rgba(207,150,69,0.07)",
+              border: "1px solid rgba(212,175,55,0.07)",
               top: -200,
               right: -150,
               pointerEvents: "none",
@@ -358,7 +358,7 @@ export default function OurWorks() {
               width: 300,
               height: 300,
               borderRadius: "50%",
-              border: "1px solid rgba(207,150,69,0.06)",
+              border: "1px solid rgba(212,175,55,0.06)",
               bottom: -100,
               left: -80,
               pointerEvents: "none",
@@ -372,8 +372,8 @@ export default function OurWorks() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 8,
-                background: "rgba(207,150,69,0.15)",
-                border: "1px solid rgba(207,150,69,0.3)",
+                background: "rgba(212,175,55,0.15)",
+                border: "1px solid rgba(212,175,55,0.3)",
                 borderRadius: 100,
                 padding: "5px 16px 5px 10px",
                 marginBottom: "1.4rem",
@@ -403,7 +403,7 @@ export default function OurWorks() {
 
             <h1
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Montserrat', sans-serif",
                 fontSize: "clamp(2rem, 3vw, 2rem)",
                 fontWeight: 700,
                 color: T.white,
@@ -476,7 +476,7 @@ export default function OurWorks() {
                     display: "inline-block",
                     background:
                       (CAT_COLORS[lightbox.cat] || {}).bg ||
-                      "rgba(207,150,69,0.2)",
+                      "rgba(212,175,55,0.2)",
                     color: (CAT_COLORS[lightbox.cat] || {}).text || T.gold,
                     fontSize: "0.65rem",
                     fontWeight: 700,
@@ -485,14 +485,14 @@ export default function OurWorks() {
                     padding: "4px 10px",
                     borderRadius: 4,
                     marginBottom: 8,
-                    border: "1px solid rgba(207,150,69,0.3)",
+                    border: "1px solid rgba(212,175,55,0.3)",
                   }}
                 >
                   {lightbox.cat}
                 </div>
                 <div
                   style={{
-                    fontFamily: "'Cormorant Garamond', serif",
+                    fontFamily: "'Montserrat', sans-serif",
                     fontSize: "1.8rem",
                     fontWeight: 700,
                     color: T.white,

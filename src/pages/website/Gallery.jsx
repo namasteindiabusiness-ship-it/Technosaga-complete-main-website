@@ -5,16 +5,24 @@ import { Helmet } from "react-helmet-async";
 
 const StyleSheet = { create: (s) => s };
 
+/* ── GLOBAL DARK THEME OVERRIDE ── */
+const GLOBAL_CSS = `
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+  body { background: #0B0F1A; }
+`;
+
+
+
 const T = {
-  gold: "#CF9645",
-  bg: "#f8f4ef",
+  gold: "#D4AF37",
+  bg: "#0B0F1A",
   dark: "rgba(10,6,0,0.94)",
   radius: 12,
 };
 
 const styles = StyleSheet.create({
   page: {
-    background: T.bg,
+    background: "#0B0F1A",
     minHeight: "100vh",
     padding: "2.5rem 1.5rem 4rem",
   },
@@ -155,7 +163,7 @@ const styles = StyleSheet.create({
     fontSize: "0.75rem",
     color: "rgba(255,255,255,0.35)",
     letterSpacing: "0.14em",
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: "'Poppins', sans-serif",
   },
 });
 
@@ -295,7 +303,7 @@ export default function GalleryPage() {
         <title>Photo Gallery | Technosaga Infotech</title>
         <link rel="canonical" href="https://technosagainfotech.in/gallery" />
       </Helmet>
-      <div style={styles.page}>
+      <div style={{...styles.page, background:"#0B0F1A", fontFamily:"'Poppins', sans-serif", paddingTop: 72}}>
         <style>{`
         @media (max-width: 900px)  { .gal-grid { columns: 3 180px !important; } }
         @media (max-width: 600px)  { .gal-grid { columns: 2 140px !important; } }

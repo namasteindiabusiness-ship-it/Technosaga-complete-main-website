@@ -5,23 +5,31 @@ import { Helmet } from "react-helmet-async";
 
 const StyleSheet = { create: (s) => s };
 
+/* ── GLOBAL DARK THEME OVERRIDE ── */
+const GLOBAL_CSS = `
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+  body { background: #0B0F1A; }
+`;
+
+
+
 const T = {
-  gold: "#CF9645",
-  goldDark: "#b8762a",
-  goldLight: "#fdf6e9",
-  goldBorder: "rgba(207,150,69,0.22)",
-  bg: "#f8f4ef",
-  white: "#ffffff",
-  text: "#1a1208",
-  textMid: "#5a4020",
-  textMuted: "#9e8c6e",
+  gold: "#D4AF37",
+  goldDark: "#b8962d",
+  goldLight: "rgba(212,175,55,0.08)",
+  goldBorder: "rgba(212,175,55,0.2)",
+  bg: "#0B0F1A",
+  white: "#fff",
+  text: "rgba(255,255,255,0.85)",
+  textMid: "rgba(255,255,255,0.6)",
+  textMuted: "rgba(255,255,255,0.4)",
   radius: { sm: 6, md: 10, lg: 14, xl: 20 },
 };
 
 const styles = StyleSheet.create({
   page: {
-    fontFamily: "'DM Sans', sans-serif",
-    background: T.bg,
+    fontFamily: "'Poppins', sans-serif",
+    background: "#0B0F1A",
     minHeight: "100vh",
   },
 
@@ -33,7 +41,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     position: "relative",
     overflow: "hidden",
-    marginTop: 90,
+    marginTop: 72,
   },
   heroGlow: {
     position: "absolute",
@@ -41,7 +49,7 @@ const styles = StyleSheet.create({
     height: 700,
     borderRadius: "50%",
     background:
-      "radial-gradient(circle, rgba(207,150,69,0.1) 0%, transparent 65%)",
+      "radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 65%)",
     top: "50%",
     left: "50%",
     transform: "translate(-50%,-50%)",
@@ -52,7 +60,7 @@ const styles = StyleSheet.create({
     width: 400,
     height: 400,
     borderRadius: "50%",
-    border: "1px solid rgba(207,150,69,0.08)",
+    border: "1px solid rgba(212,175,55,0.08)",
     top: -150,
     right: -100,
     pointerEvents: "none",
@@ -62,7 +70,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
     borderRadius: "50%",
-    border: "1px solid rgba(207,150,69,0.06)",
+    border: "1px solid rgba(212,175,55,0.06)",
     bottom: -80,
     left: -60,
     pointerEvents: "none",
@@ -71,8 +79,8 @@ const styles = StyleSheet.create({
     display: "inline-flex",
     alignItems: "center",
     gap: 8,
-    background: "rgba(207,150,69,0.15)",
-    border: "1px solid rgba(207,150,69,0.3)",
+    background: "rgba(212,175,55,0.15)",
+    border: "1px solid rgba(212,175,55,0.3)",
     borderRadius: 100,
     padding: "5px 16px 5px 10px",
     marginBottom: "1.4rem",
@@ -93,7 +101,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   heroTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
     fontWeight: 700,
     color: T.white,
@@ -119,12 +127,12 @@ const styles = StyleSheet.create({
     gap: "3rem",
     flexWrap: "wrap",
     position: "relative",
-    borderTop: "1px solid rgba(207,150,69,0.15)",
+    borderTop: "1px solid rgba(212,175,55,0.15)",
     paddingTop: "2.5rem",
   },
   statItem: { textAlign: "center" },
   statNum: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "2.4rem",
     fontWeight: 700,
     color: T.gold,
@@ -174,7 +182,7 @@ const styles = StyleSheet.create({
     marginBottom: "4rem",
   },
   leaderCard: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.xl,
     overflow: "hidden",
     border: `1px solid ${T.goldBorder}`,
@@ -219,10 +227,10 @@ const styles = StyleSheet.create({
     padding: "1.6rem 1.8rem 1.8rem",
   },
   leaderName: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.4rem",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     margin: "0 0 3px",
     lineHeight: 1.2,
   },
@@ -235,7 +243,7 @@ const styles = StyleSheet.create({
   },
   leaderBio: {
     fontSize: "0.84rem",
-    color: T.textMuted,
+    color: "rgba(255,255,255,0.4)",
     lineHeight: 1.75,
     margin: "0 0 1.3rem",
   },
@@ -254,7 +262,7 @@ const styles = StyleSheet.create({
     height: 32,
     borderRadius: "50%",
     border: `1.5px solid ${T.goldBorder}`,
-    background: T.goldLight,
+    background: "rgba(212,175,55,0.08)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -282,7 +290,7 @@ const styles = StyleSheet.create({
     gap: "1.2rem",
   },
   teamCard: {
-    background: T.white,
+    background: "#121826",
     borderRadius: T.radius.lg,
     overflow: "hidden",
     border: `1px solid ${T.goldBorder}`,
@@ -321,15 +329,15 @@ const styles = StyleSheet.create({
     padding: "1rem 1.1rem 1.2rem",
   },
   teamName: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "1.1rem",
     fontWeight: 700,
-    color: T.text,
+    color: "rgba(255,255,255,0.82)",
     margin: "0 0 2px",
   },
   teamRole: {
     fontSize: "0.76rem",
-    color: T.textMuted,
+    color: "rgba(255,255,255,0.4)",
     marginBottom: "0.9rem",
   },
   teamSocialRow: {
@@ -344,7 +352,7 @@ const styles = StyleSheet.create({
     height: 28,
     borderRadius: "50%",
     border: `1px solid ${T.goldBorder}`,
-    background: T.goldLight,
+    background: "rgba(212,175,55,0.08)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -361,7 +369,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     position: "relative",
     overflow: "hidden",
-    border: "1px solid rgba(207,150,69,0.18)",
+    border: "1px solid rgba(212,175,55,0.18)",
   },
   joinGlow: {
     position: "absolute",
@@ -369,7 +377,7 @@ const styles = StyleSheet.create({
     height: 500,
     borderRadius: "50%",
     background:
-      "radial-gradient(circle, rgba(207,150,69,0.09) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)",
     top: "50%",
     left: "50%",
     transform: "translate(-50%,-50%)",
@@ -385,7 +393,7 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   joinTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "clamp(1.8rem, 3vw, 2.8rem)",
     fontWeight: 700,
     color: T.white,
@@ -499,7 +507,7 @@ export default function Team() {
         <title>Contact Us | Technosaga Infotech</title>
         <link rel="canonical" href="https://technosagainfotech.in/contact" />
       </Helmet>
-      <div style={styles.page}>
+      <div style={{...styles.page, background:"#0B0F1A", fontFamily:"'Poppins', sans-serif", paddingTop: 72}}>
         <style>{`
         @media (max-width: 960px) {
           .leaders-grid { grid-template-columns: repeat(2, 1fr) !important; }
