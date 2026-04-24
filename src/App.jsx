@@ -55,6 +55,7 @@ const VacancyList = lazy(() => import("./pages/admin/VacancyList"));
 const VacancyAdd = lazy(() => import("./pages/admin/VacancyAdd"));
 const BlogList = lazy(() => import("./pages/admin/BlogList"));
 const BlogCreate = lazy(() => import("./pages/admin/BlogCreate"));
+const AdminServices = lazy(() => import("./pages/admin/AdminServices"));
 const UpdateBlog = lazy(() => import("./components/UpdateBlog"));
 
 export default function App() {
@@ -122,6 +123,7 @@ export default function App() {
           <Route element={<AdminLayoutNew />}>
             <Route path="/dashboard/home" element={<Dashboard />} />
             <Route path="/dashboard/leads" element={<AdminLeads />} />
+            <Route path="/dashboard/services" element={<AdminServices />} />
             <Route path="/dashboard/settings" element={<AdminSettings />} />
             <Route path="/dashboard/banner-list" element={<BannerList />} />
             <Route path="/dashboard/banner-create" element={<BannerAdd />} />

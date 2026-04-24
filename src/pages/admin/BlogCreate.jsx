@@ -14,6 +14,8 @@ export default function BlogCreate() {
   const [category, setCategory] = useState("");
   const [featuredImage, setFeaturedImage] = useState(null);
   const [content, setContent] = useState("");
+  const [metaDescription, setMetaDescription] = useState("");
+  const [keywords, setKeywords] = useState("");
 
   const [loading, setLoading] = useState(false);
 
@@ -36,6 +38,8 @@ export default function BlogCreate() {
       fd.append("categoryId", category?.id);
       fd.append("categoryName", category?.name);
       fd.append("content", content);
+      fd.append("metaDescription", metaDescription);
+      fd.append("keywords", keywords);
       if (featuredImage) fd.append("file", featuredImage);
 
       await API.post("/post/createPost", fd, {
@@ -46,6 +50,8 @@ export default function BlogCreate() {
       setCategory("");
       setFeaturedImage(null);
       setContent("");
+      setMetaDescription("");
+      setKeywords("");
       navigate("/dashboard/blog-list");
     } catch (error) {
       console.error(error?.response?.data?.message);
@@ -73,17 +79,17 @@ export default function BlogCreate() {
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="inpt-row">
-                <label>Title</label>
+                <label>Title *</label>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Enter title"
+                  placeholder="Enter blog title"
                   required
                 />
               </div>
               <div className="inpt-row">
-                <label>Category</label>
+                <label>Category *</label>
                 <select onChange={handleSelectChange} required>
                   <option value="">Select Category</option>
                   {pharmaCategories.map((categ) => (
@@ -96,15 +102,37 @@ export default function BlogCreate() {
             </div>
             <div className="form-row">
               <div className="inpt-row">
-                <label>Poster</label>
+                <label>Featured Image</label>
                 <input
                   type="file"
+                  accept="image/*"
                   onChange={(e) => setFeaturedImage(e.target.files[0])}
+                />
+              </div>
+              <div className="inpt-row">
+                <label>Keywords (comma separated)</label>
+                <input
+                  type="text"
+                  value={keywords}
+                  onChange={(e) => setKeywords(e.target.value)}
+                  placeholder="e.g. digital marketing, SEO, Patna"
                 />
               </div>
             </div>
             <div className="form-row">
               <div className="inpt-row">
+                <label>Meta Description (for SEO)</label>
+                <textarea
+                  value={metaDescription}
+                  onChange={(e) => setMetaDescription(e.target.value)}
+                  placeholder="Write a short meta description for SEO (150-160 characters recommended)"
+                  style={{ height: "70px", resize: "vertical" }}
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="inpt-row">
+                <label>Blog Content *</label>
                 <CKEditor
                   editor={ClassicEditor}
                   config={{
@@ -119,7 +147,7 @@ export default function BlogCreate() {
               {loading ? (
                 <BiLoader size={24} className="animate-spin" />
               ) : (
-                "Add"
+                "Publish Blog"
               )}
             </Button>
           </form>

@@ -346,7 +346,7 @@ export function GalleryDataTable({ deleteGallery, galleryData }) {
                   <img
                     src={item.photo}
                     alt={item.title}
-                    className="cart-image"
+                    style={{ width: "80px", height: "60px", objectFit: "cover", borderRadius: "6px" }}
                   />
                 </StyledTableCell>
                 <StyledTableCell component="th" scope="row">
@@ -479,7 +479,7 @@ export function MemberDataTable({
                     <img
                       src={item.photo}
                       alt={item.name}
-                      className="cart-image"
+                      style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "50%" }}
                     />
                   </StyledTableCell>
                   <StyledTableCell component="th" scope="row">
@@ -631,8 +631,9 @@ export function PostDataTable({ postData, deletePost, updatePostStatus }) {
         <TableHead>
           <TableRow>
             <StyledTableCell>#</StyledTableCell>
-            <StyledTableCell>Poster</StyledTableCell>
+            <StyledTableCell>Featured Image</StyledTableCell>
             <StyledTableCell>Title</StyledTableCell>
+            <StyledTableCell>Description</StyledTableCell>
             <StyledTableCell>Category</StyledTableCell>
             <StyledTableCell>Status</StyledTableCell>
             <StyledTableCell>Action</StyledTableCell>
@@ -647,13 +648,18 @@ export function PostDataTable({ postData, deletePost, updatePostStatus }) {
                   {item?.file != null && (
                     <img
                       src={`${itemPatha}${item?.file}`}
-                      alt="item?.title"
-                      className="cart-image"
+                      alt={item?.title}
+                      style={{ width: "70px", height: "50px", objectFit: "cover", borderRadius: "6px" }}
                     />
                   )}
                 </StyledTableCell>
-                <StyledTableCell component="th" scope="row">
-                  {item.title}
+                <StyledTableCell component="th" scope="row" style={{ maxWidth: "180px" }}>
+                  <span style={{ fontWeight: 600, fontSize: "0.85rem" }}>{item.title}</span>
+                </StyledTableCell>
+                <StyledTableCell style={{ maxWidth: "200px" }}>
+                  <span style={{ fontSize: "0.78rem", color: "#666", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                    {item.metaDescription || item.description || "—"}
+                  </span>
                 </StyledTableCell>
                 <StyledTableCell component="th" scope="row">
                   {item.categoryName}
@@ -673,17 +679,30 @@ export function PostDataTable({ postData, deletePost, updatePostStatus }) {
                   <div className="btn-flex">
                     <Button
                       variant="contained"
+                      color="info"
+                      size="small"
+                      onClick={() => window.open(`/blog/${item.slug || item._id}`, "_blank")}
+                      title="View"
+                    >
+                      <FaEye />
+                    </Button>
+                    <Button
+                      variant="contained"
                       color="success"
+                      size="small"
                       onClick={() =>
                         navigate(`/dashboard/update-blog/${item._id}`)
                       }
+                      title="Edit"
                     >
                       <FaPen />
                     </Button>
                     <Button
                       variant="contained"
                       color="error"
+                      size="small"
                       onClick={() => deletePost(item._id)}
+                      title="Delete"
                     >
                       <FaTrashAlt />
                     </Button>
@@ -694,7 +713,7 @@ export function PostDataTable({ postData, deletePost, updatePostStatus }) {
           </TableBody>
         ) : (
           <TableBody>
-            <StyledTableCell colSpan={5}>No record found</StyledTableCell>
+            <StyledTableCell colSpan={7}>No record found</StyledTableCell>
           </TableBody>
         )}
       </Table>

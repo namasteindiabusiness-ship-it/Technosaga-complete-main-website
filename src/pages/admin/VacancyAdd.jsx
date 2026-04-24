@@ -52,6 +52,7 @@ export default function VacancyAdd() {
 
   return (
     <>
+      <Toaster richColors position="top-center" />
       <div className="page-header">
         <h2 className="d-flexs">
           Vacancy Add
@@ -66,57 +67,61 @@ export default function VacancyAdd() {
       <div className="manage">
         <div className="add-product">
           <form onSubmit={handleAdd}>
-            <div>
-              <div className="form-row">
-                <div className="inpt-row">
-                  <label>Position Name</label>
-                  <input
-                    type="text"
-                    value={positionName}
-                    onChange={(e) => setPositionName(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="inpt-row">
-                  <label>Number of Post</label>
-                  <input
-                    type="number"
-                    value={numberOfPositions}
-                    onChange={(e) => setNumberOfPositions(e.target.value)}
-                    required
-                  />
-                </div>
+            <div className="form-row">
+              <div className="inpt-row">
+                <label>Position Name *</label>
+                <input
+                  type="text"
+                  value={positionName}
+                  onChange={(e) => setPositionName(e.target.value)}
+                  placeholder="e.g. Software Developer"
+                  required
+                />
               </div>
-              <div className="form-row">
-                <div className="inpt-row">
-                  <label>Experience</label>
-                  <input
-                    type="text"
-                    value={experience}
-                    onChange={(e) => setExperience(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="inpt-row">
-                  <label>Location</label>
-                  <input
-                    type="text"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    required
-                  />
-                </div>
+              <div className="inpt-row">
+                <label>Number of Posts *</label>
+                <input
+                  type="number"
+                  value={numberOfPositions}
+                  onChange={(e) => setNumberOfPositions(e.target.value)}
+                  placeholder="e.g. 2"
+                  min="1"
+                  required
+                />
               </div>
-              <div className="form-row">
-                <div className="inpt-row">
-                  <label>About Position</label>
-                  <textarea
-                    type="text"
-                    value={aboutPosition}
-                    onChange={(e) => setAboutPosition(e.target.value)}
-                    required
-                  />
-                </div>
+            </div>
+            <div className="form-row">
+              <div className="inpt-row">
+                <label>Experience Required *</label>
+                <input
+                  type="text"
+                  value={experience}
+                  onChange={(e) => setExperience(e.target.value)}
+                  placeholder="e.g. 2 years / Fresher"
+                  required
+                />
+              </div>
+              <div className="inpt-row">
+                <label>Location *</label>
+                <input
+                  type="text"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="e.g. Patna, Bihar"
+                  required
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="inpt-row">
+                <label>About Position / Job Description *</label>
+                <textarea
+                  value={aboutPosition}
+                  onChange={(e) => setAboutPosition(e.target.value)}
+                  placeholder="Describe the role, responsibilities, and requirements..."
+                  style={{ height: "100px", resize: "vertical" }}
+                  required
+                />
               </div>
             </div>
 
@@ -124,7 +129,7 @@ export default function VacancyAdd() {
               {loading ? (
                 <BiLoader size={24} className="animate-spin" />
               ) : (
-                "Add Press Release"
+                "Add Vacancy"
               )}
             </Button>
           </form>

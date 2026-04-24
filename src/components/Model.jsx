@@ -733,9 +733,10 @@ export function ApplicantsModal({ selectedJob, setIsApplicantData }) {
       const { data: res } = await API.get(
         `/career/getApplyListByVacancyId/${selectedJob?._id}`,
       );
-      setApplicantData(res.data.reverse());
+      setApplicantData(res.data ? res.data.reverse() : []);
     } catch (error) {
       console.error(error?.response?.data?.message);
+      setApplicantData([]);
     } finally {
       setIsLoading(false);
     }
@@ -746,12 +747,11 @@ export function ApplicantsModal({ selectedJob, setIsApplicantData }) {
     getApplicantByVacnacyId();
   }, [selectedJob?._id]);
 
-  if (isLoading) return <Loading />;
   return (
     <div className="modal-section">
       <div className="modal-content">
         <div className="modal-headers">
-          <h2>Applicant List for {selectedJob.positionName}</h2>
+          <h2>Applicant List — {selectedJob.positionName}</h2>
           <span
             className="modal-close"
             onClick={() => setIsApplicantData(false)}
@@ -760,43 +760,55 @@ export function ApplicantsModal({ selectedJob, setIsApplicantData }) {
           </span>
         </div>
         <div className="modal-body">
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Resume</th>
-              </tr>
-            </thead>
-            <tbody>
-              {applicantData.length > 0 ? (
-                applicantData.map((item) => (
-                  <tr key={item._id}>
-                    <td>{item.name}</td>
-                    <td>{item.email}</td>
-                    <td>{item.phone}</td>
-                    <td>
-                      <a
-                        href={item.resumePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="down-btn"
-                      >
-                        Download Resume
-                      </a>
+          {isLoading ? (
+            <div style={{ textAlign: "center", padding: "2rem", color: "#888" }}>
+              Loading applicants...
+            </div>
+          ) : (
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Resume</th>
+                </tr>
+              </thead>
+              <tbody>
+                {applicantData.length > 0 ? (
+                  applicantData.map((item, i) => (
+                    <tr key={item._id}>
+                      <td>{i + 1}</td>
+                      <td>{item.name}</td>
+                      <td>{item.email}</td>
+                      <td>{item.phone}</td>
+                      <td>
+                        {item.resumePath ? (
+                          <a
+                            href={item.resumePath}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="down-btn"
+                          >
+                            Download Resume
+                          </a>
+                        ) : (
+                          <span style={{ color: "#888", fontSize: "0.8rem" }}>No resume</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="5" style={{ textAlign: "center", padding: "2rem", color: "#888" }}>
+                      No applicants found for this position.
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="4" style={{ textAlign: "center" }}>
-                    No applicants found.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                )}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>
