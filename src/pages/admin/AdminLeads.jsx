@@ -100,16 +100,9 @@ export default function AdminLeads() {
     try {
       const { data: res } = await API.get("/enquiry/list");
       setLeads(res?.data || []);
-    } catch {
-      // Demo fallback
-      setLeads([
-        { _id:"1", name:"Rahul Sharma", mobile:"9876543210", email:"rahul@email.com", city:"Patna", service:"Web Design & Development", status:"New", type:"Website", message:"Need a corporate website with admin panel.", createdAt: new Date(Date.now()-86400000) },
-        { _id:"2", name:"Priya Singh", mobile:"8765432109", email:"priya@email.com", city:"Delhi", service:"Digital Marketing", status:"Interested", type:"Chatbot", message:"Looking for SEO and social media management.", createdAt: new Date(Date.now()-172800000) },
-        { _id:"3", name:"Amit Kumar", mobile:"7654321098", email:"amit@email.com", city:"Ranchi", service:"BPO Services", status:"Deal Closed", type:"Website", message:"Need 10 telecallers for our call centre.", createdAt: new Date(Date.now()-259200000) },
-        { _id:"4", name:"Sunita Devi", mobile:"6543210987", email:"sunita@email.com", city:"Muzaffarpur", service:"App Development", status:"Quote Sent", type:"Website", message:"E-commerce app for my grocery store.", createdAt: new Date(Date.now()-345600000) },
-        { _id:"5", name:"Vikram Jha", mobile:"9988776655", email:"vikram@email.com", city:"Patna", service:"Graphic Design", status:"Connected", type:"Chatbot", message:"Logo and branding for my startup.", createdAt: new Date(Date.now()-432000000) },
-        { _id:"6", name:"Meena Kumari", mobile:"9877665544", email:"meena@email.com", city:"Bhagalpur", service:"Event Management", status:"Not Interested", type:"Website", message:"Corporate event for 200 people.", createdAt: new Date(Date.now()-518400000) },
-      ]);
+    } catch (error) {
+      console.error("Failed to fetch leads:", error?.response?.data?.message);
+      setLeads([]);
     } finally { setLoading(false); }
   };
 
